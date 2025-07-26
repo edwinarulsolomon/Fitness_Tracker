@@ -1,10 +1,10 @@
 import java.util.Scanner;
 import java.sql.*;
-public class Registration implements Database_Handle{
+public class RegistrationImpl implements RegistrationDAO{
     Scanner sc;
     Connection conn;
     PreparedStatement ps;
-    Registration(Scanner sc,Connection conn)
+    RegistrationImpl(Scanner sc,Connection conn)
     {
         this.conn=conn;
         this.sc=sc;
@@ -28,12 +28,12 @@ public class Registration implements Database_Handle{
         String level=sc.nextLine();
         System.out.println("Set your Password ");
         String pass=sc.nextLine();
-        int id=SetUserLogin(name,pass);
-        SetUserDetails(id,age,gender,height,weight,level);
+        int id=setUserLogin(name,pass);
+        setUserDetails(id,age,gender,height,weight,level);
     }
 
     @Override
-    public void SetUserDetails(int userid, int age, String gender, float height, float weight, String level) {
+    public void setUserDetails(int userid, int age, String gender, float height, float weight, String level) {
         String sql = "INSERT INTO user_details (user_id, age, gender, height, weight, level) VALUES (?, ?, ?, ?, ?, ?)";
         try {
             ps=conn.prepareStatement(sql);
@@ -51,7 +51,7 @@ public class Registration implements Database_Handle{
     }
 
     @Override
-    public int SetUserLogin(String name, String pass) {
+    public int setUserLogin(String name, String pass) {
         String sql = "INSERT INTO login (username, password) VALUES (?, ?)";
         try {
             ps=conn.prepareStatement(sql,PreparedStatement.RETURN_GENERATED_KEYS);

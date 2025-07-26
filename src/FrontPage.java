@@ -21,15 +21,15 @@ public class FrontPage {
             System.out.println("please enter number between 1 to 3");
             input = sc.nextInt();
             sc.nextLine();
-        } while (input <= 0 && input > 3);
+        } while (input < 1 || input > 3);
         switch (input) {
             case 1:
-                Login login = new Login(sc,conn);
+                LoginImpl login = new LoginImpl(sc,conn);
                 login.logindetails();
                 break;
 
             case 2:
-                Registration register = new Registration(sc,conn);
+                RegistrationImpl register = new RegistrationImpl(sc,conn);
                 register.registerationdatails();
                 break;
 
