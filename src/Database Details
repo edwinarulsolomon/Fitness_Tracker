@@ -1,0 +1,64 @@
+-- 1. Login Table
+CREATE TABLE login (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL
+);
+
+-- 2. User Details Table
+CREATE TABLE user_details (
+    user_id INT PRIMARY KEY,
+    age INT CHECK (age>=18),
+    gender CHAR(1),
+    weight FLOAT,
+    height FLOAT,
+    level VARCHAR(20),
+    FOREIGN KEY (user_id) REFERENCES login(user_id) ON DELETE CASCADE
+);
+
+-- 3. Workout Logs Table
+CREATE TABLE workout_logs (
+    user_id INT,
+    date DATE,
+    pushups INT,
+    pullups INT,
+    jumping_jacks INT,
+    squats INT,
+    plank INT,
+    jumping_squats INT,
+    deadlifts INT,
+    weighted_squats INT,
+    running INT,
+    calories_burnt_during_workout INT,
+    protein_intake_during_workout INT,
+    PRIMARY KEY (user_id, date),
+    FOREIGN KEY (user_id) REFERENCES login(user_id) ON DELETE CASCADE
+);
+
+-- 4. Progress Table
+CREATE TABLE progress (
+    progress_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    date DATE,
+    calories_burnt INT,
+    protein_intake INT,
+    remark VARCHAR(255),
+    FOREIGN KEY (user_id) REFERENCES login(user_id) ON DELETE CASCADE
+);
+
+-- 5. Goals Table
+CREATE TABLE goals (
+    user_id INT PRIMARY KEY,
+    calories_burn_perday INT,
+    protein_intake_perday INT,
+    target_weight FLOAT,
+    FOREIGN KEY (user_id) REFERENCES login(user_id) ON DELETE CASCADE
+);
+
+-- 6. Feedback Table
+CREATE TABLE feedback (
+    feedback_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    feedbacks VARCHAR(1000),
+    FOREIGN KEY (user_id) REFERENCES login(user_id) ON DELETE CASCADE
+);
