@@ -1,1 +1,1 @@
-Do DataBase Connection configuration on your own !
+Handle the database connection configuration on your own!
