@@ -16,7 +16,7 @@ public class RegistrationImpl implements RegistrationDAO{
         System.out.println("Enter your Age");
         int age=sc.nextInt();
         sc.nextLine();
-        System.out.println("Enter your Gender");
+        System.out.println("Enter your Gender ( M or F )");
         String gender=sc.nextLine();
         System.out.println("Enter your Height");
         float height=sc.nextFloat();
@@ -24,7 +24,7 @@ public class RegistrationImpl implements RegistrationDAO{
         System.out.println("Enter your Weight");
         float weight=sc.nextFloat();
         sc.nextLine();
-        System.out.println("Enter your Level (Beginner ,Intermediate ,Advanced");
+        System.out.println("Enter your Level (Beginner ,Intermediate ,Advanced)");
         String level=sc.nextLine();
         System.out.println("Set your Password ");
         String pass=sc.nextLine();
